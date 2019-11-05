@@ -17,5 +17,6 @@ app.use(router);
 app.use(errorHandler)
 // APP RUN
 app.listen(APP_PORT, _ => {
+  
     console.log(`Listening to port ${APP_PORT}`);
 });

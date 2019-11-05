@@ -2,11 +2,10 @@ import dotenv from 'dotenv';
 
 const config = dotenv.config().parsed;
 
-
 const setDefault = (defaultValues) => {
-    Object.keys(config).forEach(prop => {
+    Object.keys(defaultValues).forEach(prop => {
         if (typeof config[prop] === 'undefined') {
-            config[prop] = defaultValues[value];
+            config[prop] = defaultValues[prop];
         };
     });
 };

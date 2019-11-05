@@ -2,11 +2,6 @@ import mongoose from 'mongoose';
 
 import config from '../config/env-config.mjs';
 
-
-const options = {
-    MONGODB_URI: config.MONGODB_URI
-};
-
 class MongoManager {
     
     constructor(config){
@@ -16,22 +11,20 @@ class MongoManager {
     getConnectionURL(){
         return this._config.MONGODB_URI;
     }
-
-    isConnected() {
-        mongoose.connection.on('connected',_=> true);
-    }
     
     connect() {
+        console.log(this.getConnectionURL());
+
         return mongoose.connect(this.getConnectionURL(), { 
-            useNewUrlParser: true, 
-            useUnifiedTopology: true 
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true
         });
-      }
+    }
     
     disconnect(){
         mongoose.disconnect();
     }
 }
 
-
-export default new MongoManager(options);
+export default new MongoManager({ MONGODB_URI: config.MONGODB_URI });

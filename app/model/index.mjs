@@ -1,3 +1,5 @@
-import UserModel from './UserModel.mjs';
+import UserDAO from './dao/UserDAO.mjs';
 
-export { UserModel };
+const userDAO = new UserDAO();
+
+export { userDAO };

@@ -4,14 +4,15 @@ import config from '../../config/env-config.mjs';
 import { encryptPassword } from '../../utils/passwords.mjs'
 
 // DEFINE SCHEMA PROPERTIES
-const props = {};
-props[config.AUTH_USER_FIELD] = {
-    type: String,
-    required: true
-};
-props[config.AUTH_PASS_FIELD] = {
-    type: String,
-    required: true
+const props = {
+    username: {
+        type: String,
+        required: true
+    }, 
+    password: {
+        type: String,
+        required: true
+    }
 };
 
 // CREATE SCHEMA
@@ -26,10 +27,11 @@ UserSchema.static('findById', function(id, then) {
     return then(this.findOne({ '_id': id }));
 });
 
+
 // MIDDLEWARE
-UserSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function() {
     this.password = await encryptPassword(this.password);
-    next();
+    return this;
 });
 
 
