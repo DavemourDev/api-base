@@ -1,4 +1,6 @@
-import jwt from 'jsonwebtoken';
+import jwt from 'jwt-simple';
+import moment from 'moment';
+
 import config from '../config/env-config.mjs';
 
 function decodeToken(token) {
@@ -32,6 +34,8 @@ function createToken(user) {
         iat: moment().unix(),
         exp: moment().add(1, 'days').unix()
     };
+
+
     return jwt.encode(payload, config.SECRET_TOKEN);
 }
 

@@ -1,11 +1,13 @@
 
 /* ERROR HANDLER */
 function errorHandler(error, request, response, next) {
-    if (response.headersSent) {
-        return next(error);
+    if (error) {
+        if (response.headersSent) {
+            return next(error);
+        }
+        console.error(error.stack);
+        response.status(500).json({ "error": error.message });
     }
-    response.setStatus(500);
-    response.render('error', { error });
 }
 
 export default errorHandler;

@@ -1,10 +1,10 @@
 {
   "name": "api-base",
   "version": "1.0.0",
-  "main": "app/index.mjs",
+  "main": "./app/index.mjs",
   "license": "MIT",
   "scripts": {
-    "start": "node --experimental-modules app/index.mjs"
+    "start": "node --experimental-modules ./app/index.mjs"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "jwt-simple": "^0.5.6",
     "moment": "^2.24.0",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1",

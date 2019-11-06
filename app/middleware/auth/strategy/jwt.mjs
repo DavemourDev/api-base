@@ -8,8 +8,8 @@ const ExtractJWT = passportJWT.ExtractJwt;
 const options = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: config.SECRET_TOKEN,
-    usernameField: config.AUTH_USER_FIELD,
-    passwordField: config.AUTH_PASS_FIELD
+    usernameField: username,
+    passwordField: password
 };
 
 const strategy = new Strategy(options, (jwtPayload, done) => {

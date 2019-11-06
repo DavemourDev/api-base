@@ -1,12 +1,5 @@
 export default class HomeController {
 
-    /**
-     * 
-     * 
-     * @param request 
-     * @param response 
-     * @param next 
-     */
     async index(request, response, next) {
 
         response.json({
@@ -15,13 +8,6 @@ export default class HomeController {
 
     }
 
-    /**
-     * 
-     * 
-     * @param request 
-     * @param response 
-     * @param next 
-     */
     async unauthorized(request, response, next) {
 
         response.json({

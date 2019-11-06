@@ -4,8 +4,8 @@ import bodyParser from 'body-parser';
 
 // PROJECT MODULES
 import config from './config/env-config.mjs';
-import router from './routes';
-import errorHandler from './middleware/error';
+import router from './routes/index.mjs';
+import errorHandler from './middleware/error/index.mjs';
 
 // CONSTANTS
 const APP_PORT = parseInt(config.APP_PORT)
@@ -14,7 +14,8 @@ const APP_PORT = parseInt(config.APP_PORT)
 const app = express();
 app.use(bodyParser.json());
 app.use(router);
-app.use(errorHandler)
+app.use(errorHandler);
+
 // APP RUN
 app.listen(APP_PORT, _ => {
   
