@@ -3,10 +3,24 @@ import mongoose from 'mongoose';
 
 // CREATE SCHEMA
 const GameSchema = mongoose.Schema({
-    name: String,
-    description: String,
-    category: String,
-    script: String
+    "name": {
+        type: String,
+        required: true,
+        unique: true
+    },
+    "description": {
+        type: String,
+        default: ''
+    },
+    "category": {
+        type: String,
+        enum: ['default', 'math'],
+        default: "default"
+    },
+    "script": {
+        type: String,
+        required: true
+    }
 });
 
 // SCHEMA METHODS
