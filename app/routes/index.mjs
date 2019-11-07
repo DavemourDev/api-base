@@ -1,39 +1,20 @@
 import express from 'express';
 
 import auth from '../middleware/auth/index.mjs';
-import { HomeController, UserController, GameController } from '../controller/index.mjs';
+import { HomeController } from '../controller/index.mjs';
+import gameRouter from './gameRoutes.mjs';
+import gamePlayRouter from './gamePlayRoutes.mjs';
+import userRouter from './userRoutes.mjs';
+import router from './gamePlayRoutes.mjs';
 
-const router = express.Router();
+const appRouter = express.Router();
+const controller = new HomeController();
 
-const home = new HomeController();
-const users = new UserController();
-const games = new GameController();
+appRouter.use('/gameplays', gamePlayRouter);
+appRouter.use('/games', gameRouter);
+appRouter.use('/users', userRouter);
 
-router.get('/unauthorized', home.unauthorized)
-
-// HOME
-router.get('/', auth.authenticate, home.index);
-// USER ROUTES
-router.post('/login', users.login);
-router.post('/register', users.register);
-router.get('/users', users.getAll);
-router.get('/users/me', users.getCurrent); // TODO
-// GAME ROUTES
-
-// raíz
-router.get('/games', games.listAllGames);
-router.post('/games', games.insertGame);
-
-// Búsqueda
-router.get('/games/id/:id', games.getGameById);
-router.get('/games/name/:name', games.getGameByName);
-router.get('/games/category/:category', games.listGamesInCategory);
-
-// Modificar/borrar
-router.put('/games/:id', games.editGame);
-router.delete('/games/:id', games.deleteGame);
-
-// GAMEPLAY ROUTES
-router.get('/gameplays', gameplays.listAllGameplays);
+appRouter.get('/unauthorized', controller.unauthorized)
+appRouter.get('/', auth.authenticate, controller.index);
 
 export default router;

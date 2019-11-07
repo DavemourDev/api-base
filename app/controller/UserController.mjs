@@ -60,4 +60,16 @@ export default class UserController {
         response.status(200).json({'user': 'me'});
     }
 
+    async getUserScores(request, response, next) {
+
+    }
+
+    async editUser(request, response, next) {
+
+    }
+
+    async deleteUser(request, response, next) {
+
+    }
+
 };

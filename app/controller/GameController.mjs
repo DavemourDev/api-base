@@ -87,14 +87,17 @@ export default class GameController {
     }
 
     async deleteGame(request, response, next) {
-// TODO terminar
 
         const { id } = request.params;
 
         try {
-            
+            const deletedData = await gameDAO.remove(id);
+            response.status(200).json({
+                result: "success",
+                deleted: deletedData
+            });
         } catch (error) {
-            
+            next(error);
         }
     }
 
