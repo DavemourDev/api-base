@@ -77,6 +77,16 @@ export default class GamePlayController {
         }
     }
 
+    async getHighestScoreGamePlayForGame(request, response, next) {
+        const { id } = request.params;
+        try {
+            let data = await gamePlayDAO.findHighestScoreForGame(id);
+            response.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     async getGamePlaysByPlayer(request, response, next) {
     
         const { id } = request.body;

@@ -5,16 +5,15 @@ import { HomeController } from '../controller/index.mjs';
 import gameRouter from './gameRoutes.mjs';
 import gamePlayRouter from './gamePlayRoutes.mjs';
 import userRouter from './userRoutes.mjs';
-import router from './gamePlayRoutes.mjs';
 
 const appRouter = express.Router();
 const controller = new HomeController();
 
 appRouter.use('/gameplays', gamePlayRouter);
-appRouter.use('/games', gameRouter);
-appRouter.use('/users', userRouter);
+appRouter.use('/games', auth.authenticate, gameRouter);
+appRouter.use('/users', auth.authenticate, userRouter);
 
 appRouter.get('/unauthorized', controller.unauthorized)
 appRouter.get('/', auth.authenticate, controller.index);
 
-export default router;
+export default appRouter;

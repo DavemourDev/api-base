@@ -1,6 +1,6 @@
 import express from 'express';
 
-import GamePlayController from '../controller/index.mjs';
+import {GamePlayController} from '../controller/index.mjs';
 
 const router = express.Router();
 const controller = new GamePlayController();
@@ -13,6 +13,7 @@ router.get('/today', controller.getGamePlaysFromToday);
 router.get('/week', controller.getGamePlaysFromLastWeek);
 router.get('/month', controller.getGamePlaysFromLastMonth);
 router.get('/game/:id', controller.getGamePlaysByGame);
+router.get('/game/:id/highest', controller.getHighestScoreGamePlayForGame);
 router.get('/player/:id', controller.getGamePlaysByPlayer);
 // Modificar/borrar
 router.put('/:id', controller.editGamePlay);

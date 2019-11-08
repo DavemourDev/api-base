@@ -28,4 +28,8 @@ GameSchema.static('findByCategory', function(category) {
     return this.find({ category });
 });
 
+GameSchema.static('findOneByName', function(name) {
+    return this.findOne({ name: name });
+});
+
 export default GameSchema;

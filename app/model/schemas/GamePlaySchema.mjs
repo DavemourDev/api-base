@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import moment from 'moment-timezone';
 
 // CREATE SCHEMA
 const GamePlaySchema = mongoose.Schema({
@@ -22,37 +23,52 @@ const GamePlaySchema = mongoose.Schema({
         enum: ['S', 'A', 'B', 'C', 'D', 'E'],
         required: true
     },
-    dateTime: Date
+    dateTime: {
+        type: Date,
+        default: moment.utc(),
+    }
 });
 
 // SCHEMA METHODS
 GamePlaySchema.static('findLastMonth', function() {
-    // TODO return last month gameplays
+    const dateLastMonth = moment().startOf('month');
+    return this.find({ dateTime: {
+        $gt: dateLastMonth
+    }});
+
 });
 
 GamePlaySchema.static('findLastWeek', function() {
-    // TODO return last week gameplays
+    const dateLastWeek = moment().startOf('week');
+    return this.find({ dateTime: {
+        $gt: dateLastWeek
+    }});
 });
 
 GamePlaySchema.static('findToday', function() {
-    // TODO return today gameplays
+    const dateToday = moment().startOf('day');
+    return this.find({ dateTime: {
+        $gt: dateToday
+    }});
 });
 
 GamePlaySchema.static('findByGame', function(gameId) {
-    // TODO return all gameplays from a game
+    return this.find({ gameID: ObjectID(gameId)});
 });
 
 GamePlaySchema.static('findHighestScoreForGame', function(gameId) {
-    // TODO return highest score for a given game
+    return this.findByGame(gameId).findHighestScore().findOne();
 });
 
 GamePlaySchema.static('findByPlayer', function(playerId) {
-    // TODO return highest score for a given game
+    return this.find(playerId);
 });
 
-// Middleware
-GamePlaySchema.pre('save', async function() {
-    // TODO: Establecer fechas de partida como fecha actual
-})
+GamePlaySchema.static('findHighestScore', function() {
+    return this.find().sort({score: -1}).limit(1);
+});
+
+
+
 
 export default GamePlaySchema;

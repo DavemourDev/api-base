@@ -1,10 +1,14 @@
 {
-  "name": "api-base",
-  "version": "1.0.0",
+  "name": "api-g4e",
+  "version": "0.0.1",
   "main": "./app/index.mjs",
   "license": "MIT",
   "scripts": {
+    "start-dev": "node --experimental-modules ./app/index.mjs",
     "start": "node --experimental-modules ./app/index.mjs"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -14,6 +18,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
