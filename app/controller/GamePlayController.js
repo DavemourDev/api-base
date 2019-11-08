@@ -1,4 +1,4 @@
-import { gamePlayDAO } from '../model/index.mjs';
+import { gamePlayDAO } from '../model/index.js';
 
 export default class GamePlayController {
 

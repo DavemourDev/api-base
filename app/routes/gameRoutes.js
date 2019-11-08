@@ -1,6 +1,6 @@
 import express from 'express'; 
 
-import { GameController } from '../controller/index.mjs';
+import { GameController } from '../controller/index.js';
 
 const router = express.Router();
 const controller = new GameController();

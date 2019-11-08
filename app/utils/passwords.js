@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-import config from '../config/env-config.mjs';
+import config from '../config/env-config.js';
 
 
 async function encryptPassword(password) {

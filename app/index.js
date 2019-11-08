@@ -3,9 +3,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 // PROJECT MODULES
-import config from './config/env-config.mjs';
-import router from './routes/index.mjs';
-import errorHandler from './middleware/error/index.mjs';
+import config from './config/env-config.js';
+import router from './routes/index.js';
+import errorHandler from './middleware/error/index.js';
 
 // CONSTANTS
 const APP_PORT = parseInt(config.APP_PORT)

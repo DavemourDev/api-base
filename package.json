@@ -1,11 +1,11 @@
 {
   "name": "api-g4e",
   "version": "0.0.1",
-  "main": "./app/index.mjs",
+  "main": "./app/index.js",
   "license": "MIT",
   "scripts": {
-    "start-dev": "node --experimental-modules ./app/index.mjs",
-    "start": "node --experimental-modules ./app/index.mjs"
+    "start-dev": "node --experimental-modules ./app/index.js",
+    "start": "node --experimental-modules ./app/index.js"
   },
   "engines": {
     "node": "12.x"

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { GameSchema }  from '../schemas/index.mjs';
+import { GameSchema }  from '../schemas/index.js';
 
 const GameModel = mongoose.model('Game', GameSchema);
 

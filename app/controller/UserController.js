@@ -1,6 +1,6 @@
-import { createToken } from '../utils/tokens.mjs';
-import { comparePasswords } from '../utils/passwords.mjs';
-import { userDAO } from '../model/index.mjs';
+import { createToken } from '../utils/tokens.js';
+import { comparePasswords } from '../utils/passwords.js';
+import { userDAO } from '../model/index.js';
 
 export default class UserController {
 

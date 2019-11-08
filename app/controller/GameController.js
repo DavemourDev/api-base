@@ -1,5 +1,5 @@
 
-import { gameDAO } from '../model/index.mjs'
+import { gameDAO } from '../model/index.js'
 
 export default class GameController {
 

@@ -1,7 +1,7 @@
 import jwt from 'jwt-simple';
 import moment from 'moment';
 
-import config from '../config/env-config.mjs';
+import config from '../config/env-config.js';
 
 function decodeToken(token) {
 

@@ -1,10 +1,10 @@
 import express from 'express';
 
-import auth from '../middleware/auth/index.mjs';
-import { HomeController } from '../controller/index.mjs';
-import gameRouter from './gameRoutes.mjs';
-import gamePlayRouter from './gamePlayRoutes.mjs';
-import userRouter from './userRoutes.mjs';
+import auth from '../middleware/auth/index.js';
+import { HomeController } from '../controller/index.js';
+import gameRouter from './gameRoutes.js';
+import gamePlayRouter from './gamePlayRoutes.js';
+import userRouter from './userRoutes.js';
 
 const appRouter = express.Router();
 const controller = new HomeController();

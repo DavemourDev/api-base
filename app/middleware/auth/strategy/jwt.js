@@ -1,6 +1,6 @@
 import passportJWT from 'passport-jwt';
-import config from '../../../config/env-config.mjs';
-import { userDAO } from '../../../model/index.mjs';
+import config from '../../../config/env-config.js';
+import { userDAO } from '../../../model/index.js';
 
 const Strategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;

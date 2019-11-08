@@ -1,5 +1,5 @@
-import mongo from '../../database/MongoManager.mjs'; 
-import GamePlayModel from '../models/GamePlayModel.mjs';
+import mongo from '../../database/MongoManager.js'; 
+import GamePlayModel from '../models/GamePlayModel.js';
 
 export default class GamePlayDAO {
 

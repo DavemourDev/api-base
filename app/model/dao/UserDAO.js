@@ -1,5 +1,5 @@
-import mongo from '../../database/MongoManager.mjs'; 
-import UserModel from '../models/UserModel.mjs';
+import mongo from '../../database/MongoManager.js'; 
+import UserModel from '../models/UserModel.js';
 
 export default class UserDAO {
 

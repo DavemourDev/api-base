@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import config from '../config/env-config.mjs';
+import config from '../config/env-config.js';
 
 class MongoManager {
     

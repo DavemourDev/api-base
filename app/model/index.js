@@ -1,6 +1,6 @@
-import UserDAO from './dao/UserDAO.mjs';
-import GameDAO from './dao/GameDAO.mjs';
-import GamePlayDAO from './dao/GamePlayDAO.mjs';
+import UserDAO from './dao/UserDAO.js';
+import GameDAO from './dao/GameDAO.js';
+import GamePlayDAO from './dao/GamePlayDAO.js';
 
 const userDAO = new UserDAO();
 const gameDAO = new GameDAO();

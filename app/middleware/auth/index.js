@@ -1,6 +1,6 @@
 import passport from 'passport';
 
-import strategy from './strategy/jwt.mjs';
+import strategy from './strategy/jwt.js';
 
 const options = { 
     failureRedirect: '/unauthorized',
