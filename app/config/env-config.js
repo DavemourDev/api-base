@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-const config = dotenv.config().parsed;
+const config = process.env;
 
 const setDefault = (defaultValues) => {
     Object.keys(defaultValues).forEach(prop => {
