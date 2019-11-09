@@ -1,6 +1,6 @@
-import passportJWT from 'passport-jwt';
-import config from '../../../config/env-config.js';
-import { userDAO } from '../../../model/index.js';
+const passportJWT = require('passport-jwt');
+const config = require('../../../config/env-config.js');
+const userDAO = require('../../../model/index.js').userDAO;
 
 const Strategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
@@ -19,5 +19,4 @@ const strategy = new Strategy(options, (jwtPayload, done) => {
         .catch(error => done(error, false));
     
 });
-
-export default strategy;
+module.exports = strategy;

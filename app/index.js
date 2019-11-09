@@ -1,14 +1,11 @@
 // 3RD PARTY MODULES
-import express from 'express';
-import bodyParser from 'body-parser';
+const express = require('express');
+const bodyParser = require('body-parser');
 
 // PROJECT MODULES
-import config from './config/env-config.js';
-import router from './routes/index.js';
-import errorHandler from './middleware/error/index.js';
-
-// CONSTANTS
-const APP_PORT = parseInt(config.APP_PORT)
+const config = require('./config/env-config.js');
+const router = require('./routes/index.js');
+const errorHandler = require('./middleware/error/index.js');
 
 // APP SETUP
 const app = express();
@@ -17,6 +14,6 @@ app.use(router);
 app.use(errorHandler);
 
 // APP RUN
-app.listen(APP_PORT, _ => {
+app.listen(config.PORT, _ => {
   
 });

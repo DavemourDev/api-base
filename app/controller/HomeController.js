@@ -1,8 +1,8 @@
-export default class HomeController {
+class HomeController {
 
     async index(request, response, next) {
 
-        response.json({
+        response.status(200).json({
             'message': "welcome"
         });
 
@@ -10,12 +10,13 @@ export default class HomeController {
 
     async unauthorized(request, response, next) {
 
-        response.json({
+        response.status(401).json({
             'message': "unauthorized"
         });
 
     }
-
-    
-
 };
+
+
+module.exports = new HomeController();
+//export default new HomeController();

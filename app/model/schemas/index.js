@@ -1,5 +1,5 @@
-import UserSchema from './UserSchema.js';
-import GameSchema from './GameSchema.js';
-import GamePlaySchema from './GamePlaySchema.js';
+const UserSchema = require('./UserSchema.js');
+const GameSchema = require('./GameSchema.js');
+const GamePlaySchema = require('./GamePlaySchema.js');
 
-export { UserSchema, GameSchema, GamePlaySchema };
+module.exports = { UserSchema, GameSchema, GamePlaySchema };

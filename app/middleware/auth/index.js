@@ -1,6 +1,6 @@
-import passport from 'passport';
+const passport = require('passport');
 
-import strategy from './strategy/jwt.js';
+const strategy = require('./strategy/jwt.js');
 
 const options = { 
     failureRedirect: '/unauthorized',
@@ -12,7 +12,7 @@ passport.use(strategy);
 passport.initialize();
 
 // EXPORT AUTHENTICATION FUNCTION
-export default {
+module.exports = {
     initialize: passport.initialize,
     authenticate: passport.authenticate('jwt', options)
 };

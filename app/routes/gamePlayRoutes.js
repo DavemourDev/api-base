@@ -1,9 +1,5 @@
-import express from 'express';
-
-import {GamePlayController} from '../controller/index.js';
-
-const router = express.Router();
-const controller = new GamePlayController();
+const router = require('express').Router();
+const controller = require ('../controller/index.js').GamePlayController;
 
 router.get('/', controller.listAllGamePlays);
 router.post('/', controller.insertGamePlay);
@@ -19,4 +15,4 @@ router.get('/player/:id', controller.getGamePlaysByPlayer);
 router.put('/:id', controller.editGamePlay);
 router.delete('/:id', controller.deleteGamePlay);
 
-export default router;
+module.exports = router;

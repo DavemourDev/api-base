@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import config from '../config/env-config.js';
+const config = require('../config/env-config.js');
 
 class MongoManager {
     
@@ -27,4 +27,4 @@ class MongoManager {
     }
 }
 
-export default new MongoManager({ MONGODB_URI: config.MONGODB_URI });
+module.exports = new MongoManager({ MONGODB_URI: config.MONGODB_URI });

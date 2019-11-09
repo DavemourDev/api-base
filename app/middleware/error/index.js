@@ -10,4 +10,4 @@ function errorHandler(error, request, response, next) {
     }
 }
 
-export default errorHandler;
+module.exports = errorHandler;

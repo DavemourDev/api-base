@@ -1,19 +1,18 @@
-import express from 'express';
+const express = require('express');
 
-import auth from '../middleware/auth/index.js';
-import { HomeController } from '../controller/index.js';
-import gameRouter from './gameRoutes.js';
-import gamePlayRouter from './gamePlayRoutes.js';
-import userRouter from './userRoutes.js';
+const auth = require('../middleware/auth/index.js');
+const controller = require('../controller/index.js').HomeController;
+const gameRouter = require('./gameRoutes.js');
+const gamePlayRouter = require('./gamePlayRoutes.js');
+const userRouter = require('./userRoutes.js');
 
 const appRouter = express.Router();
-const controller = new HomeController();
 
 appRouter.use('/gameplays', gamePlayRouter);
-appRouter.use('/games', auth.authenticate, gameRouter);
-appRouter.use('/users', auth.authenticate, userRouter);
+appRouter.use('/games', gameRouter);
+appRouter.use('/users', userRouter);
 
 appRouter.get('/unauthorized', controller.unauthorized)
 appRouter.get('/', auth.authenticate, controller.index);
 
-export default appRouter;
+module.exports = appRouter;

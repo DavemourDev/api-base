@@ -1,9 +1,5 @@
-import express from 'express'; 
-
-import { GameController } from '../controller/index.js';
-
-const router = express.Router();
-const controller = new GameController();
+const router = require('express').Router();
+const controller = require('../controller/index.js').GameController;
 
 // raíz
 router.get('/', controller.listAllGames);
@@ -16,4 +12,4 @@ router.get('/category/:category', controller.listGamesInCategory);
 router.put('/:id', controller.editGame);
 router.delete('/:id', controller.deleteGame);
 
-export default router;
+module.exports = router;

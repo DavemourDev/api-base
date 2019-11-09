@@ -1,8 +1,8 @@
-import { createToken } from '../utils/tokens.js';
-import { comparePasswords } from '../utils/passwords.js';
-import { userDAO } from '../model/index.js';
+const createToken = require('../utils/tokens.js').createToken;
+const comparePasswords = require('../utils/passwords.js').comparePasswords;
+const userDAO = require('../model/index.js').userDAO;
 
-export default class UserController {
+class UserController {
 
     async login(request, response, next) {
 
@@ -73,3 +73,5 @@ export default class UserController {
     }
 
 };
+
+module.exports = new UserController();

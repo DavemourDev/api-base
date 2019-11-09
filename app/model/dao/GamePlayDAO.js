@@ -1,7 +1,7 @@
-import mongo from '../../database/MongoManager.js'; 
-import GamePlayModel from '../models/GamePlayModel.js';
+const mongo = require('../../database/MongoManager.js'); 
+const GamePlayModel = require('../models/GamePlayModel.js');
 
-export default class GamePlayDAO {
+class GamePlayDAO {
 
     constructor() {
         mongo.connect();
@@ -54,3 +54,5 @@ export default class GamePlayDAO {
     }
 
 };
+
+module.exports = new GamePlayDAO();

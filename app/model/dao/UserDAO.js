@@ -1,7 +1,7 @@
-import mongo from '../../database/MongoManager.js'; 
-import UserModel from '../models/UserModel.js';
+const mongo = require('../../database/MongoManager.js'); 
+const UserModel = require('../models/UserModel.js');
 
-export default class UserDAO {
+class UserDAO {
 
     constructor() {
         mongo.connect();
@@ -37,3 +37,5 @@ export default class UserDAO {
     }
 
 };
+
+module.exports = new UserDAO();

@@ -1,14 +1,11 @@
-import express from 'express';
-
-import { UserController } from '../controller/index.js';
-
-const router = express.Router();
-const controller = new UserController();
+const router = require('express').Router();
+const controller = require('../controller/index.js').UserController;
+const auth = require('../middleware/auth/index.js');
 
 // USER ROUTES
 router.post('/login', controller.login);
 router.post('/register', controller.register);
-router.get('/', controller.getAll);
+router.get('/', auth.authenticate, controller.getAll);
 router.get('/me', controller.getCurrent); // TODO
 
-export default router;
+module.exports = router;

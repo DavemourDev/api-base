@@ -1,7 +1,7 @@
-import jwt from 'jwt-simple';
-import moment from 'moment';
+const jwt = require('jwt-simple');
+const moment = require('moment-timezone');
 
-import config from '../config/env-config.js';
+const config = require('../config/env-config.js');
 
 function decodeToken(token) {
 
@@ -39,4 +39,4 @@ function createToken(user) {
     return jwt.encode(payload, config.SECRET_TOKEN);
 }
 
-export { createToken, decodeToken };
+module.exports = { createToken, decodeToken };

@@ -1,7 +1,4 @@
-import mongoose from 'mongoose';
+const GamePlaySchema = require('../schemas/index.js').GamePlaySchema;
+const GamePlayModel = require('mongoose').model('GamePlay', GamePlaySchema);
 
-import { GamePlaySchema }  from '../schemas/index.js';
-
-const GamePlayModel = mongoose.model('GamePlay', GamePlaySchema);
-
-export default GamePlayModel;
+module.exports = GamePlayModel;

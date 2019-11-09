@@ -1,7 +1,6 @@
+const gameDAO = require('../model/index.js').gameDAO;
 
-import { gameDAO } from '../model/index.js'
-
-export default class GameController {
+class GameController {
 
     async listAllGames(request, response, next) {
 
@@ -102,3 +101,5 @@ export default class GameController {
     }
 
 };
+
+module.exports = new GameController();

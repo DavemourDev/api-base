@@ -1,15 +1,15 @@
-import mongoose from 'mongoose';
-import moment from 'moment-timezone';
+const Schema = require('mongoose').Schema;
+const moment = require('moment-timezone');
 
 // CREATE SCHEMA
-const GamePlaySchema = mongoose.Schema({
+const GamePlaySchema = Schema({
     userID: { 
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
     gameID: { 
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Game',
         required: true
     },
@@ -69,6 +69,4 @@ GamePlaySchema.static('findHighestScore', function() {
 });
 
 
-
-
-export default GamePlaySchema;
+module.exports = GamePlaySchema;

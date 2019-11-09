@@ -1,6 +1,6 @@
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 
-import config from '../config/env-config.js';
+const config = require('../config/env-config.js');
 
 
 async function encryptPassword(password) {
@@ -11,4 +11,4 @@ async function comparePasswords(password, hash) {
     return await bcrypt.compare(password, hash);
 }
 
-export {encryptPassword, comparePasswords};
+module.exports= {encryptPassword, comparePasswords};

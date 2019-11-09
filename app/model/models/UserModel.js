@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import { UserSchema }  from '../schemas/index.js';
+const UserSchema = require('../schemas/index.js').UserSchema;
 
 const UserModel = mongoose.model('User', UserSchema);
 
-export default UserModel;
+module.exports = UserModel;

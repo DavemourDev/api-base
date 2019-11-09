@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import { encryptPassword } from '../../utils/passwords.js'
+const encryptPassword = require('../../utils/passwords.js').encryptPassword;
 
 // CREATE SCHEMA
 const UserSchema = mongoose.Schema({
@@ -31,4 +31,4 @@ UserSchema.pre('save', async function() {
 });
 
 
-export default UserSchema;
+module.exports = UserSchema;

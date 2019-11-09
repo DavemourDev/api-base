@@ -1,6 +1,6 @@
-import HomeController from './HomeController.js';
-import UserController from './UserController.js';
-import GameController from './GameController.js';
-import GamePlayController from './GamePlayController.js';
+const HomeController = require('./HomeController.js');
+const UserController = require('./UserController.js');
+const GameController = require('./GameController.js');
+const GamePlayController = require('./GamePlayController.js');
 
-export { HomeController, UserController, GameController, GamePlayController };
+module.exports =  { HomeController, UserController, GameController, GamePlayController };

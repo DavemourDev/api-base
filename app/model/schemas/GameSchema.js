@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 
 // CREATE SCHEMA
@@ -32,4 +32,4 @@ GameSchema.static('findOneByName', function(name) {
     return this.findOne({ name: name });
 });
 
-export default GameSchema;
+module.exports = GameSchema;

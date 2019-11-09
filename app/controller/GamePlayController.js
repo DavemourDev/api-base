@@ -1,6 +1,6 @@
-import { gamePlayDAO } from '../model/index.js';
+const gamePlayDAO = require('../model/index.js').gamePlayDAO ;
 
-export default class GamePlayController {
+class GamePlayController {
 
     async listAllGamePlays(request, response, next) {
         
@@ -137,3 +137,5 @@ export default class GamePlayController {
 
 
 };
+
+module.exports =  new GamePlayController(); 
