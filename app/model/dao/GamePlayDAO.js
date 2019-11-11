@@ -40,6 +40,10 @@ class GamePlayDAO {
         return GamePlayModel.findToday();
     }
 
+    getUserTotalScore(userID) {
+        return GamePlayModel.getUsersTotalScore();
+    }
+
     update(id, data){
         return GamePlayModel.findByIdAndUpdate(id, data, {
             new: true, 

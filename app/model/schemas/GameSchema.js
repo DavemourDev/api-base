@@ -6,7 +6,8 @@ const GameSchema = mongoose.Schema({
     "name": {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        index:true
     },
     "description": {
         type: String,
@@ -15,7 +16,8 @@ const GameSchema = mongoose.Schema({
     "category": {
         type: String,
         enum: ['default', 'math'],
-        default: "default"
+        default: "default",
+        index: true
     },
     "script": {
         type: String,

@@ -6,12 +6,14 @@ const GamePlaySchema = Schema({
     userID: { 
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        index: true
     },
     gameID: { 
         type: Schema.Types.ObjectId,
         ref: 'Game',
-        required: true
+        required: true,
+        index: true
     },
     score: {
         type: Number,
@@ -26,6 +28,7 @@ const GamePlaySchema = Schema({
     dateTime: {
         type: Date,
         default: moment.utc(),
+        index: true
     }
 });
 
@@ -66,6 +69,19 @@ GamePlaySchema.static('findByPlayer', function(playerId) {
 
 GamePlaySchema.static('findHighestScore', function() {
     return this.find().sort({score: -1}).limit(1);
+});
+
+GamePlaySchema.static('getUsersTotalScore', function() {
+    return this.aggregate([
+        {
+            "$group": {
+                "_id": "$userID",
+                "score": {
+                    "$sum": "$score"
+                }
+            }
+        }
+    ]);
 });
 
 

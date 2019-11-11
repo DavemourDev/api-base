@@ -13,8 +13,6 @@ class MongoManager {
     }
     
     connect() {
-        console.log(this.getConnectionURL());
-
         return mongoose.connect(this.getConnectionURL(), { 
             useNewUrlParser: true,
             useUnifiedTopology: true,

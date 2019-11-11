@@ -1,6 +1,7 @@
 const createToken = require('../utils/tokens.js').createToken;
 const comparePasswords = require('../utils/passwords.js').comparePasswords;
 const userDAO = require('../model/index.js').userDAO;
+const gamePlayDAO = require('../model/index.js').gamePlayDAO;
 
 class UserController {
 
@@ -14,12 +15,17 @@ class UserController {
                 .then(user => {
                     if (user && comparePasswords(password, user.password)) {
                         const token = createToken(user);
-                        response.status(200).json({ 
+                        response.status(200).json({
+                            "result": "success",
                             "message": "Logged in",
                             token 
                         });
                     } else {
-                        response.sendStatus(401);
+                        response.sendStatus(401).json({
+                            "result": "error",
+                            "error": "VALIDATION_FAIL",
+                            "message": "Username and password doesn't match."
+                        });
                     }
                     
                 })
@@ -27,7 +33,11 @@ class UserController {
 
         } else {
             // Username and/or password not provided. Forbid.
-            response.sendStatus(401);
+            response.sendStatus(400).json({
+                "result": "error",
+                "error": "WRONG_ARGS",
+                "message": "Request body must have an username and a password"
+            });
         }
 
     }
@@ -36,15 +46,22 @@ class UserController {
 
         const { username, password, retypePassword } = request.body;
         // Check passwords
-        if (password && retypePassword && password === retypePassword) {
+        if (username && password && retypePassword && password === retypePassword) {
             const data = {
                 username, password
             };
             userDAO.create(data)
-                .then(_ => response.status(200).json({'result': 'Registered successfully'}))
+                .then(_ => response.status(200).json({
+                    'result': 'success',
+                    'message': 'Registered successfully'
+                }))
                 .catch(error => next(error));
         } else {
-            response.status(500).json({'error': 'Incorrect password'});
+            response.status(400).json({
+                'result': 'error',
+                'error': 'WORNG_ARGS',
+                'message': 'Request body must have an username, a password and a retypePassword. Password and retypePassword must match'
+            });
         }
 
     }
@@ -55,21 +72,62 @@ class UserController {
             .catch(error => next(error));
     }
 
+    async getUserById(request, response, next) {
+        const { id } = request.params;
+        
+        userDAO.findById(id).then(data => {
+            if (data) {
+                response.status(200).json(data);
+            } else {
+                response.status(404).json({
+                    "result": "error",
+                    "error": 'NOT_FOUND',
+                    "message": "User not found."
+                });
+            }
+
+        }).catch(error => next(error));
+    }
+
     async getCurrent(request, response, next) {
         // TODO enlace con DAO
         response.status(200).json({'user': 'me'});
     }
 
-    async getUserScores(request, response, next) {
-
-    }
-
-    async editUser(request, response, next) {
-
+    async getUserTotalScore(request, response, next) {
+        const { id } = request.params;
+        
+        gamePlayDAO.getUserTotalScore(id).then(data => {
+            if (data) {
+                response.status(200).json(data.find(user => user._id == id));
+            } else {
+                response.status(404).json({
+                    "result": "error",
+                    "error": "NOT_FOUND",
+                    "message": "Player scores not found. Perhaps player doesn't exist"
+                });
+            }
+        }).catch(error => next(error));
     }
 
     async deleteUser(request, response, next) {
+        const { id } = request.params;
 
+        userDAO.remove(id).then(data => {
+            if (data) {
+                response.status(200).json({
+                    'result': 'success',
+                    'deleted': data
+                });
+            } else {
+                response.status(404).json({
+                    'result': 'error',
+                    'error': 'NOT_FOUND',
+                    'message': "Deletion failed. User not found."
+                });
+            }
+        }).catch(error => next(error));
+        
     }
 
 };
